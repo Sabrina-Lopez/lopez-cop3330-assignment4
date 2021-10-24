@@ -40,6 +40,6 @@
       </children>
    </GridPane>
 
-    <Label fx:id="welcomeText" />
+    <Label fx:id="buttonResponses" />
     <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onSubmitItemClick" text="Submit" textAlignment="CENTER" />
 </VBox>

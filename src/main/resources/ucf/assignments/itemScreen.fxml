@@ -9,7 +9,7 @@
     <padding>
         <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
     </padding>
-    <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onBackToHomeClick" text="Back to To-Do List" textAlignment="CENTER" />
+    <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onBackToListClick" text="Back to To-Do List" textAlignment="CENTER" />
     <Label alignment="TOP_CENTER" text="Item" textAlignment="CENTER">
         <font>
             <Font size="15.0" />
@@ -33,6 +33,6 @@
       </children>
    </GridPane>
 
-    <Label fx:id="welcomeText" />
-    <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onMakeItemClick" text="Edit Item" textAlignment="CENTER" />
+    <Label fx:id="buttonResponses" />
+    <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onEditItemClick" text="Edit Item" textAlignment="CENTER" />
 </VBox>

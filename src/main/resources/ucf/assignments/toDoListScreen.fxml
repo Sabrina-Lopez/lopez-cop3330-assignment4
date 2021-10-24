@@ -32,14 +32,14 @@
      </rowConstraints>
    </GridPane>
 
-    <Label fx:id="welcomeText" />
+    <Label fx:id="buttonResponses" />
     <ButtonBar buttonMinWidth="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="580.0">
         <buttons>
-            <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onMakeListClick" text="Make Item" textAlignment="CENTER" />
-            <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onMakeListClick" text="Edit To-Do List" textAlignment="CENTER" />
-            <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onDeleteListClick" text="Delete Item" textAlignment="CENTER" />
-            <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onSaveListsClick" text="View Completed Items" textAlignment="CENTER" />
-            <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onLoadListsClick" text="View Uncompleted Items" textAlignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onEditListClick" text="Edit To-Do List" textAlignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onMakeItemClick" text="Make Item" textAlignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onDeleteItemClick" text="Delete Item" textAlignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onViewCompletedItemsClick" text="View Completed Items" textAlignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onViewUncompletedItemsClick" text="View Uncompleted Items" textAlignment="CENTER" />
         </buttons>
     </ButtonBar>
 </VBox>
