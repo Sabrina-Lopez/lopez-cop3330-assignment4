@@ -110,10 +110,6 @@ public class ApplicationController extends javafx.application.Application {
         return innerMap;
     }
 
-    ArrayList<ItemDetails> itemsArray = ArrayList<>();
-
-    public static
-
     @FXML
     private Label welcomeText;
 
