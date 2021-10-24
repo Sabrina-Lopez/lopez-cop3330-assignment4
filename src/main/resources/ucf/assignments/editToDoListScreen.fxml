@@ -10,7 +10,7 @@
         <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
     </padding>
     <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onBackToListClick" text="Back to Welcome" textAlignment="CENTER" />
-    <Label alignment="TOP_CENTER" text="Make a To-Do List" textAlignment="CENTER">
+    <Label alignment="TOP_CENTER" text="Edit To-Do List" textAlignment="CENTER">
         <font>
             <Font size="15.0" />
         </font></Label>

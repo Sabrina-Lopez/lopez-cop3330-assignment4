@@ -9,13 +9,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import ucf.assignments.Application.ItemDetails;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.event.ActionEvent;
 
 public class ApplicationController extends javafx.application.Application {
 
-    /*HashMap<String, HashMap<String, Application.ItemDetails>> outerMap = new HashMap<>();
+    HashMap<String, HashMap<String, Application.ItemDetails>> outerMap = new HashMap<>();
     HashMap<String, Application.ItemDetails> innerMap = new HashMap<>();
 
     public static HashMap<String, HashMap<String, ItemDetails>> addToDoList(String toDoListTitle, HashMap<String, HashMap<String, ItemDetails>> outerMap, HashMap<String, ItemDetails> innerMap) {
@@ -44,6 +46,7 @@ public class ApplicationController extends javafx.application.Application {
     public static HashMap<String, HashMap<String, ItemDetails>> removeToDoList(HashMap<String, HashMap<String, ItemDetails>> outerMap, HashMap<String, ItemDetails> innerMap, String toDoListTitle) {
 
         outerMap.remove(toDoListTitle, innerMap); //remove the specific to-do list from the to-do list / outer hashmap
+
         return outerMap;
     }
 
@@ -55,10 +58,10 @@ public class ApplicationController extends javafx.application.Application {
         return innerMap;
     }
 
-    public static HashMap<String, HashMap<String, ItemDetails>> editToDoListTitle(String toDoListTitle, HashMap<String, HashMap<String, ItemDetails>> outerMap, HashMap<String, ItemDetails> innerMap) {
+    public static HashMap<String, HashMap<String, ItemDetails>> editToDoListTitle(String oldToDoListTitle, String newToDoListTitle, HashMap<String, HashMap<String, ItemDetails>> outerMap, HashMap<String, ItemDetails> innerMap) {
 
-        //transfer contents of current to-do list into a new to do list
-        //remove the old to-do list
+        HashMap<String, ItemDetails> copyOfItems = outerMap.remove(oldToDoListTitle);
+        outerMap.put(newToDoListTitle, copyOfItems);
 
         return outerMap;
     }
@@ -100,9 +103,41 @@ public class ApplicationController extends javafx.application.Application {
 
         innerMap.put(itemTitle, itemDetails);
         return innerMap;
-    }*/
+    }
 
-    
+    public ArrayList<ItemDetails> createCompletedItemsList(HashMap<String, ItemDetails> innerMap) {
+        ArrayList<ItemDetails> completedItemsList = new ArrayList<>();
+        ItemDetails itemDetails = new ItemDetails();
+        int i = 0;
+
+        for(HashMap.Entry<String, ItemDetails> entry : innerMap.entrySet()) {
+            i++;
+            Integer completionFlag = entry.getValue().getItemCompletionFlag();
+            if(completionFlag == 1) {
+                completedItemsList.set(i, innerMap.getOrDefault(entry.getKey(), itemDetails));
+            }
+        }
+
+        return completedItemsList;
+    }
+
+    public ArrayList<ItemDetails> createUncompletedItemsList(HashMap<String, ItemDetails> innerMap) {
+        ArrayList<ItemDetails> completedItemsList = new ArrayList<>();
+        ItemDetails itemDetails = new ItemDetails();
+        int i = 0;
+
+        for(HashMap.Entry<String, ItemDetails> entry : innerMap.entrySet()) {
+            i++;
+            Integer completionFlag = entry.getValue().getItemCompletionFlag();
+            if(completionFlag == 0) {
+                completedItemsList.set(i, innerMap.getOrDefault(entry.getKey(), itemDetails));
+            }
+        }
+
+        return completedItemsList;
+    }
+
+
 
     @FXML
     private Label buttonResponses;
@@ -127,59 +162,76 @@ public class ApplicationController extends javafx.application.Application {
         buttonResponses.setText("Edit an Item");
     }
 
-    @FXML //tell the user the new/changed list was made & navigate back to the Welcome Screen
+    @FXML //tell the user the new/changed list was made via printing to scene, & navigate back to the Welcome Screen
     protected void onSubmitListClick() {
         buttonResponses.setText("Submitted List");
+
+        //get user input from to-do list title text field and change title of list via editToDoListTitle function call
     }
 
-    @FXML //tell the user the new/changed item was made & navigate back to the To-Do List Screen
+    @FXML //tell the user the new/changed item was made via printing to scene, & navigate back to the To-Do List Screen
     protected void onSubmitItemClick() {
         buttonResponses.setText("Submitted Item");
+
+        //get user input from text fields and change the due date, description, and or completion status of the item
+        //via the editItemDueDate, editItemDescription, and editItemCompletionStatus function calls respectively
     }
 
-    @FXML //tell the user that list has been removed
+    @FXML //tell the user that the list has been removed via printing to scene
     protected void onDeleteListClick() {
         buttonResponses.setText("Remove List");
+
+        //get the title of the specific list the user wants to remove
+        //remove the list from the double hashmap via the removeToDoList function call
     }
 
-    @FXML //tell the user
+    @FXML //tell the user that the item has been removed via printing to scene
     protected void onDeleteItemClick() {
         buttonResponses.setText("Remove Item");
+
+        //get the title of the specific item the user wants to remove
+        //remove the specific item from the to-do list in the double hashmap via the removeItem function call
     }
 
-    @FXML
+    @FXML //tell the user the list has been saved via printing to scene
     protected void onSaveListsClick() {
         buttonResponses.setText("Save List");
     }
 
-    @FXML
+    @FXML //tell the user the list has loaded via printing to scene
     protected void onLoadListsClick() {
         buttonResponses.setText("Load List");
     }
 
-    @FXML
+    @FXML //navigate to Home Screen
     protected void onBackToHomeClick() {
         buttonResponses.setText("Back to Home");
     }
 
-    @FXML
+    @FXML //navigate to To-Do List Screen
     protected void onBackToListClick() {
         buttonResponses.setText("Back to List");
     }
 
-    @FXML
+    @FXML //navigate to Item Screen
     protected void onBackToItemClick() {
         buttonResponses.setText("Back to Item");
     }
 
-    @FXML
+    @FXML //tell the user the completed items are being shown via printing to scene
     protected void onViewCompletedItemsClick() {
         buttonResponses.setText("View Completed Items");
+
+        //create an arraylist of all the completed items via the createCompletedItemsList function call
+        //display the list of completed items in the scene for the user
     }
 
-    @FXML
+    @FXML //tell the user the uncompleted items are being shown via printing to scene
     protected void onViewUncompletedItemsClick() {
         buttonResponses.setText("View Uncompleted Items");
+
+        //create an arraylist of all the completed items via the createUncompletedItemsList function call
+        //display the list of uncompleted items in the scene for the user
     }
 
     @Override
