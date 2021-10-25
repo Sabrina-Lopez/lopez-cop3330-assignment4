@@ -6,13 +6,21 @@ package ucf.assignments;
  */
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import org.controlsfx.control.action.Action;
 import ucf.assignments.Application.ItemDetails;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
+
 import javafx.event.ActionEvent;
 
 public class ApplicationController extends javafx.application.Application {
@@ -137,44 +145,96 @@ public class ApplicationController extends javafx.application.Application {
         return completedItemsList;
     }
 
-
-
     @FXML
     private Label buttonResponses;
 
     @FXML //navigate to Make To-Do List Screen
-    protected void onMakeListClick() {
-        buttonResponses.setText("Make a List");
+    protected void onMakeListClick(ActionEvent event) throws IOException {
+
+        //declare a Parent variable, root, to hold the components of the fxml file
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("makeToDoListScreen.fxml")));
+
+        //declare a Scene variable, scene, to display the scene created via the fxml file
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene); //create the program window / stage for the scene
+        stage.show(); //show the program window / stage
     }
 
     @FXML //navigate to Make Item Screen
-    protected void onMakeItemClick() {
-        buttonResponses.setText("Make an Item");
+    protected void onMakeItemClick(ActionEvent event) throws IOException {
+
+        //declare a Parent variable, root, to hold the components of the fxml file
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("makeItemScreen.fxml")));
+
+        //declare a Scene variable, scene, to display the scene created via the fxml file
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene); //create the program window / stage for the scene
+        stage.show(); //show the program window / stage
     }
 
     @FXML //navigate to Edit To-Do List Screen
-    protected void onEditListClick() {
-        buttonResponses.setText("Edit a List");
+    protected void onEditListClick(ActionEvent event) throws IOException {
+
+        //declare a Parent variable, root, to hold the components of the fxml file
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("editToDoListScreen.fxml")));
+
+        //declare a Scene variable, scene, to display the scene created via the fxml file
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene); //create the program window / stage for the scene
+        stage.show(); //show the program window / stage
     }
 
     @FXML //navigate to Edit Item Screen
-    protected void onEditItemClick() {
-        buttonResponses.setText("Edit an Item");
+    protected void onEditItemClick(ActionEvent event) throws IOException {
+
+        //declare a Parent variable, root, to hold the components of the fxml file
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("editItemScreen.fxml")));
+
+        //declare a Scene variable, scene, to display the scene created via the fxml file
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene); //create the program window / stage for the scene
+        stage.show(); //show the program window / stage
     }
 
-    @FXML //tell the user the new/changed list was made via printing to scene, & navigate back to the Welcome Screen
-    protected void onSubmitListClick() {
-        buttonResponses.setText("Submitted List");
+    @FXML //take user input and edit double hashmap accordingly, and navigate back to the Welcome Screen
+    protected void onSubmitListClick(ActionEvent event) throws IOException {
 
         //get user input from to-do list title text field and change title of list via editToDoListTitle function call
+
+        //declare a Parent variable, root, to hold the components of the fxml file
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcomeScreen.fxml")));
+
+        //declare a Scene variable, scene, to display the scene created via the fxml file
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene); //create the program window / stage for the scene
+        stage.show(); //show the program window / stage
     }
 
-    @FXML //tell the user the new/changed item was made via printing to scene, & navigate back to the To-Do List Screen
-    protected void onSubmitItemClick() {
-        buttonResponses.setText("Submitted Item");
+    @FXML //take user input and edit double hashmap accordingly, and navigate back to the To-Do List Screen
+    protected void onSubmitItemClick(ActionEvent event) throws IOException {
 
         //get user input from text fields and change the due date, description, and or completion status of the item
         //via the editItemDueDate, editItemDescription, and editItemCompletionStatus function calls respectively
+
+        //declare a Parent variable, root, to hold the components of the fxml file
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("toDoListScreen.fxml")));
+
+        //declare a Scene variable, scene, to display the scene created via the fxml file
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene); //create the program window / stage for the scene
+        stage.show(); //show the program window / stage
     }
 
     @FXML //tell the user that the list has been removed via printing to scene
@@ -204,18 +264,45 @@ public class ApplicationController extends javafx.application.Application {
     }
 
     @FXML //navigate to Home Screen
-    protected void onBackToHomeClick() {
-        buttonResponses.setText("Back to Home");
+    protected void onBackToHomeClick(ActionEvent event) throws IOException {
+
+        //declare a Parent variable, root, to hold the components of the fxml file
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcomeScreen.fxml")));
+
+        //declare a Scene variable, scene, to display the scene created via the fxml file
+        Scene scene = new Scene(root);
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene); //create the program window / stage for the scene
+        stage.show(); //show the program window / stage
     }
 
     @FXML //navigate to To-Do List Screen
-    protected void onBackToListClick() {
-        buttonResponses.setText("Back to List");
+    protected void onBackToListClick(ActionEvent event) throws IOException {
+
+        //declare a Parent variable, root, to hold the components of the fxml file
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("toDoListScreen.fxml")));
+
+        //declare a Scene variable, scene, to display the scene created via the fxml file
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene); //create the program window / stage for the scene
+        stage.show(); //show the program window / stage
     }
 
     @FXML //navigate to Item Screen
-    protected void onBackToItemClick() {
-        buttonResponses.setText("Back to Item");
+    protected void onBackToItemClick(ActionEvent event) throws IOException {
+
+        //declare a Parent variable, root, to hold the components of the fxml file
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("itemScreen.fxml")));
+
+        //declare a Scene variable, scene, to display the scene created via the fxml file
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene); //create the program window / stage for the scene
+        stage.show(); //show the program window / stage
     }
 
     @FXML //tell the user the completed items are being shown via printing to scene

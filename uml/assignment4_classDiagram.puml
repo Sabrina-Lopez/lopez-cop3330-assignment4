@@ -1,27 +1,82 @@
 @startuml
-'https://plantuml.com/class-diagram
+'https://plantuml.com/class-diagram'
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+class addToDoList
+{
+    outerMap.put(toDoListTitle, innerMap)
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class addItem
+{
+    itemDetails : ItemDetails
+    completionFlag : Integer
+    itemDetails.setDueDate(dueDate)
+    itemDetails.setItemDescription(itemDescription)
+    itemDetails.setCompletionFlag(completionFlag);
+    innerMap.put(itemTitle, itemDetails);
+}
+
+class removeToDoList
+{
+    itemDetails : ItemDetails
+    innerMap.remove(itemTitle, itemDetails);
+}
+
+class removeItem
+{
+     itemDetails : ItemDetails
+     innerMap.remove(itemTitle, itemDetails)
+}
+
+class editItemDueDate
+{
+    itemDetails : ItemDetails
+    itemDetails.setDueDate(dueDate)
+    innerMap.put(itemTitle, itemDetails);
+}
+
+class editItemDescription
+{
+    itemDetails : ItemDetails
+    completionFlag : Integer
+    itemDetails.setCompletionFlag(completionFlag)
+    innerMap.put(itemTitle, itemDetails)
+}
+
+class editItemCompletionStatus
+{
+    itemDetails : ItemDetails
+    completionFlag : Integer
+    itemDetails.setCompletionFlag(completionFlag)
+    innerMap.put(itemTitle, itemDetails)
+}
+
+class createCompletedItemsList
+{
+    completedItemsList : ArrayList<ItemDetails>
+    itemDetails : ItemDetails
+    i : Integer
+    innerMap.entrySet()
+    entry.getValue().getItemCompletionFlag()
+    completedItemsList.set(i, innerMap.getOrDefault(entry.getKey(), itemDetails))
+}
+
+
+class createUncompletedItemsList
+{
+    completedItemsList : ArrayList<ItemDetails>
+    itemDetails : ItemDetails
+    i : Integer
+    innerMap.entrySet()
+    entry.getValue().getItemCompletionFlag()
+    completedItemsList.set(i, innerMap.getOrDefault(entry.getKey(), itemDetails))
+}
+
+class editToDoListTitle
+{
+    copyOfItems : HashMap<String, ItemDetails>
+    outerMap.remove(oldToDoListTitle)
+    outerMap.put(newToDoListTitle, copyOfItems)
 }
 
 @enduml
