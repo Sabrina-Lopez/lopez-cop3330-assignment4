@@ -38,5 +38,5 @@
     </GridPane>
 
     <Label fx:id="buttonResponses" />
-    <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onSubmitListClick" text="Submit" textAlignment="CENTER" />
+    <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onSubmitEditedListClick" text="Submit" textAlignment="CENTER" />
 </VBox>
