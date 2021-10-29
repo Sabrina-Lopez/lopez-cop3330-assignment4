@@ -12,7 +12,7 @@ repositories {
 }
 
 ext {
-    junitVersion = '5.7.1'
+    junitVersion = '5.8.1'
 }
 
 sourceCompatibility = '16'
@@ -24,7 +24,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'ucf.assignments'
-    mainClass = 'ucf.assignments.Application'
+    mainClass = 'ucf.assignments.Application_Startup'
 }
 
 javafx {
@@ -34,7 +34,7 @@ javafx {
 
 dependencies {
     implementation('org.controlsfx:controlsfx:11.1.0')
-    implementation('com.dlsc.formsfx:formsfx-core:11.3.2') {
+    implementation('com.dlsc.formsfx:formsfx-core:11.4.2') {
         exclude(group: 'org.openjfx')
     }
     implementation('net.synedra:validatorfx:0.1.13') {
@@ -42,7 +42,7 @@ dependencies {
     }
     implementation('org.kordamp.ikonli:ikonli-javafx:12.2.0')
     implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
-    implementation('eu.hansolo:tilesfx:11.48') {
+    implementation('eu.hansolo:tilesfx:17.0.0') {
         exclude(group: 'org.openjfx')
     }
 

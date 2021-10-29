@@ -5,7 +5,7 @@ package ucf.assignments;
  *  Copyright 2021 Sabrina Lopez
  */
 
-import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,149 +13,33 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import ucf.assignments.Application.ItemComponents;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
-import javafx.event.ActionEvent;
 
-public class ApplicationController extends javafx.application.Application {
-
-    HashMap<String, HashMap<String, Application.ItemComponents>> outerMap = new HashMap<>();
-    HashMap<String, Application.ItemComponents> innerMap = new HashMap<>();
-
-    public static HashMap<String, HashMap<String, ItemComponents>> addToDoList(String toDoListTitle, HashMap<String, HashMap<String, ItemComponents>> outerMap, HashMap<String, ItemComponents> innerMap) {
-
-        outerMap.put(toDoListTitle, innerMap);
-        return outerMap;
-    }
-
-    public static HashMap<String, ItemComponents> addItem(HashMap<String, ItemComponents> innerMap, String itemTitle, String itemDueDate, String itemDescription) {
-
-        ItemComponents itemComponents = new ItemComponents();
-
-        //will be initialized with the user's item due date input from the Screen Builder
-        itemComponents.setItemDueDate(itemDueDate);
-
-        //will be initialized with the user's item description from the Screen Builder
-        itemComponents.setItemDescription(itemDescription);
-
-        int completionFlag = 0; //will be initialized as unchecked or 0
-        itemComponents.setItemCompletionFlag(completionFlag);
-
-        innerMap.put(itemTitle, itemComponents);
-        return innerMap;
-    }
-
-    public static HashMap<String, HashMap<String, ItemComponents>> removeToDoList(HashMap<String, HashMap<String, ItemComponents>> outerMap, HashMap<String, ItemComponents> innerMap, String toDoListTitle) {
-
-        outerMap.remove(toDoListTitle, innerMap); //remove the specific to-do list from the to-do list / outer hashmap
-        return outerMap;
-    }
-
-    public static HashMap<String, ItemComponents> removeItem(HashMap<String, ItemComponents> innerMap, String itemTitle) {
-
-        ItemComponents itemComponents = new ItemComponents();
-        innerMap.remove(itemTitle, itemComponents); //remove the specific item from the items list / inner hashmap
-        return innerMap;
-    }
-
-    public static HashMap<String, HashMap<String, ItemComponents>> editToDoListTitle(String oldToDoListTitle, String newToDoListTitle, HashMap<String, HashMap<String, ItemComponents>> outerMap, HashMap<String, ItemComponents> innerMap) {
-
-        HashMap<String, ItemComponents> copyOfItems = outerMap.remove(oldToDoListTitle);
-        outerMap.put(newToDoListTitle, copyOfItems);
-        return outerMap;
-    }
-
-    public static HashMap<String, ItemComponents> editItemDueDate(HashMap<String, ItemComponents> innerMap, String itemTitle, String itemDueDate) {
-
-        ItemComponents itemComponents = new ItemComponents();
-        itemComponents.setItemDueDate(itemDueDate); //update the due date with the user's new item due date input
-        innerMap.put(itemTitle, itemComponents);
-        return innerMap;
-    }
-
-    public static HashMap<String, ItemComponents> editItemDescription(HashMap<String, ItemComponents> innerMap, String itemTitle, String itemDescription) {
-
-        ItemComponents itemComponents = new ItemComponents();
-        itemComponents.setItemDescription(itemDescription); //update the item description with the user's new item description input
-        innerMap.put(itemTitle, itemComponents);
-        return innerMap;
-    }
-
-    public static HashMap<String, ItemComponents> editItemCompletionStatus(HashMap<String, ItemComponents> innerMap, String itemTitle) {
-
-        ItemComponents itemComponents = new ItemComponents();
-        int currentCompletionFlag = itemComponents.getItemCompletionFlag();
-        int completionFlag = 0; //initialize as unmarked / uncompleted / false
-
-        if (currentCompletionFlag == 0) {
-            completionFlag = 1; //update to marked / complete / true
-        }
-        itemComponents.setItemCompletionFlag(completionFlag);
-
-        innerMap.put(itemTitle, itemComponents);
-        return innerMap;
-    }
-
-    ArrayList<ItemComponents> unCompletedItemsList = new ArrayList<>();
-    ArrayList<ItemComponents> completedItemsList = new ArrayList<>();
-
-    public ArrayList<ItemComponents> createCompletedItemsList(HashMap<String, ItemComponents> innerMap) {
-        ItemComponents itemComponents = new ItemComponents();
-        int i = 0;
-
-        for(HashMap.Entry<String, ItemComponents> entry : innerMap.entrySet()) {
-            i++;
-            Integer completionFlag = entry.getValue().getItemCompletionFlag();
-            if(completionFlag == 1) {
-                completedItemsList.set(i, innerMap.getOrDefault(entry.getKey(), itemComponents));
-            }
-        }
-
-        return completedItemsList;
-    }
-
-    public ArrayList<ItemComponents> createUncompletedItemsList(HashMap<String, ItemComponents> innerMap) {
-        ItemComponents itemComponents = new ItemComponents();
-        int i = 0;
-
-        for(HashMap.Entry<String, ItemComponents> entry : innerMap.entrySet()) {
-            i++;
-            Integer completionFlag = entry.getValue().getItemCompletionFlag();
-            if(completionFlag == 0) {
-                unCompletedItemsList.set(i, innerMap.getOrDefault(entry.getKey(), itemComponents));
-            }
-        }
-
-        return completedItemsList;
-    }
-
-
+public class ApplicationController_UserInteractionFunctions extends ApplicationController_BackgroundFunctions {
 
     @FXML
     private Label buttonResponses;
-
     @FXML
     private TextField userToDoListTitleInput;
-
     @FXML
     private TextField userItemTitleInput;
-
     @FXML
     private TextField userItemDueDateInput;
-
     @FXML
     private TextField userItemDescriptionInput;
+    @FXML
+    private TextField userItemCompletionStatusInput;
 
-    String currentToDoTitle;
+    String currentToDoListTitle;
     String currentItemTitle;
     String currentItemDescription;
     String currentItemDueDate;
+    String currentItemCompletionStatus;
 
     @FXML //navigate to Make To-Do List Screen
     protected void onMakeListClick(ActionEvent event) throws IOException {
@@ -200,7 +84,7 @@ public class ApplicationController extends javafx.application.Application {
 
         //in case the text field is already filled from a previous user response, take that current input before the new user input
         // to edit the to-do list title
-        currentToDoTitle = userToDoListTitleInput.getText();
+        currentToDoListTitle = userToDoListTitleInput.getText();
     }
 
     @FXML //navigate to Edit Item Screen
@@ -242,7 +126,7 @@ public class ApplicationController extends javafx.application.Application {
         //get user input from to-do list title text field
         // and change title of list via editToDoListTitle function call
         String newToDoListTitle = userToDoListTitleInput.getText();
-        editToDoListTitle(currentToDoTitle, newToDoListTitle, outerMap, innerMap);
+        editToDoListTitle(currentToDoListTitle, newToDoListTitle, outerMap, innerMap);
 
         //declare a Parent variable, root, to hold the components of the fxml file
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcomeScreen.fxml")));
@@ -260,10 +144,11 @@ public class ApplicationController extends javafx.application.Application {
 
         //get user input from text fields and add the item title, due date, description, and completion status into a new struct and create new index for to-do list's inner hashmap
         // via the addItem function call
-        String itemTitle = userToDoListTitleInput.getText();
-        String itemDueDate = userToDoListTitleInput.getText();
-        String itemDescription = userToDoListTitleInput.getText();
-        addItem(innerMap, itemTitle, itemDueDate, itemDescription);
+        currentItemTitle = userItemTitleInput.getText();
+        currentItemDueDate = userItemDueDateInput.getText();
+        currentItemDescription = userItemDescriptionInput.getText();
+        currentItemCompletionStatus = userItemCompletionStatusInput.getText();
+        addItem(innerMap, currentItemTitle, currentItemDueDate, currentItemDescription, currentItemCompletionStatus);
 
         //declare a Parent variable, root, to hold the components of the fxml file
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("toDoListScreen.fxml")));
@@ -281,16 +166,17 @@ public class ApplicationController extends javafx.application.Application {
 
         //get user input from text fields and change the due date, description, and or completion status of the item
         // via the editItemDueDate, editItemDescription, and editItemCompletionStatus function calls respectively
-        //declare and initialize itemTitle, a String to hold the user's selected item once gotten from the program
 
-        String itemDueDate = userToDoListTitleInput.getText();
-        //editItemDueDate(innerMap, itemTitle, itemDueDate);
+        currentItemTitle = userItemTitleInput.getText();
 
-        String itemDescription = userToDoListTitleInput.getText();
-        //editItemDescription(innerMap, itemTitle, itemDescription);
+        currentItemDueDate  = userItemDueDateInput.getText();
+        editItemDueDate(innerMap, currentItemTitle, currentItemDueDate);
 
-        String itemCompletionStatus = userToDoListTitleInput.getText();
-        //editItemCompletionStatus(innerMap, itemTitle);
+        currentItemDescription  = userToDoListTitleInput.getText();
+        editItemDescription(innerMap, currentItemTitle, currentItemDescription);
+
+        currentItemCompletionStatus = userItemCompletionStatusInput.getText();
+        editItemCompletionStatus(innerMap, currentItemTitle, currentItemCompletionStatus);
 
         //declare a Parent variable, root, to hold the components of the fxml file
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("toDoListScreen.fxml")));
@@ -371,36 +257,56 @@ public class ApplicationController extends javafx.application.Application {
         stage.show(); //show the program window / stage
     }
 
-    @FXML //tell the user the completed items are being shown via printing to scene
+    @FXML //show the user the completed items
     protected void onViewCompletedItemsClick() {
-        buttonResponses.setText("View Completed Items");
-
-        //create an arraylist of all the completed items via the createCompletedItemsList function call
-        //display the list of completed items in the scene for the user in the BorderPane
+        AnchorPane currentCompletedItems = new AnchorPane();
+        for(HashMap.Entry<String, Application_ItemStorage.ItemComponents> entry : innerMap.entrySet()) {
+            if(entry.getValue().getItemCompletionFlag().equals("1")) {
+                Text currentItem = new Text(entry.getKey());
+                currentCompletedItems.getChildren().add(currentItem);
+            }
+        }
     }
 
-    @FXML //tell the user the uncompleted items are being shown via printing to scene
+    @FXML //show the user the uncompleted items
     protected void onViewUncompletedItemsClick() {
-        buttonResponses.setText("View Uncompleted Items");
-
-        //create an arraylist of all the completed items via the createUncompletedItemsList function call
-        //display the list of uncompleted items in the scene for the user in the BorderPane
+        AnchorPane currentUncompletedItems = new AnchorPane();
+        for(HashMap.Entry<String, Application_ItemStorage.ItemComponents> entry : innerMap.entrySet()) {
+            if(entry.getValue().getItemCompletionFlag().equals("0")) {
+                Text currentItem = new Text(entry.getKey());
+                currentUncompletedItems.getChildren().add(currentItem);
+            }
+        }
     }
 
     @FXML //show the user all the current to-do lists onto the Welcome Screen
-    protected void displayAllLists() {
-        //loop through entire outer hashmap and get the keys / list titles
-        //display the list titles onto the Welcome Screen in the BorderPane
+    protected void displayCurrentLists() {
+        AnchorPane currentLists = new AnchorPane();
+        for(HashMap.Entry<String, HashMap<String, Application_ItemStorage.ItemComponents>> entry : outerMap.entrySet()) {
+            Text currentList = new Text(entry.getKey());
+            currentLists.getChildren().add(currentList);
+        }
     }
 
     @FXML //show the user all the current items of their selected to-do list title onto the To-Do List Screen
-    protected void displayAllItems(String selectedListTitle) {
-        //loop through entire struct list of the selected list title within the inner hashmap
-        //get the item titles and display them onto the To-Do List Screen in the BorderPane
+    protected void displayCurrentItems() {
+        AnchorPane currentItems = new AnchorPane();
+        for(HashMap.Entry<String, Application_ItemStorage.ItemComponents> entry : innerMap.entrySet()) {
+            Text currentItem = new Text(entry.getKey());
+            currentItems.getChildren().add(currentItem);
+        }
     }
+
+    @FXML
+    protected void displayCurrentItemComponents() {
+        AnchorPane currentItemComponents = new AnchorPane();
+        Application_ItemStorage.ItemComponents itemComponents = new Application_ItemStorage.ItemComponents();
+
+
+    }
+
+
 
     @Override
-    public void start(Stage primaryStage) {
-
-    }
+    public void start(Stage primaryStage) { }
 }

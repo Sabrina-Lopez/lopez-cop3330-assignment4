@@ -5,11 +5,6 @@ package ucf.assignments;
  *  Copyright 2021 Sabrina Lopez
  */
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import ucf.assignments.ApplicationController.*; // import ApplicationController, so we can check the outputs from the HashMap
-import ucf.assignments.Application.*; // import Application, so we have access to ItemComponents
-import java.util.HashMap;
 
 class ApplicationControllerTest {
 
