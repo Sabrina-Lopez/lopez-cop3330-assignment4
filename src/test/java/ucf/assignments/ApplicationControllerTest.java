@@ -101,15 +101,15 @@ class ApplicationControllerTest {
         //end markCompleteTest function
 
     //create a displayItemsTest
-        //
+        //assertTrue if BorderPane is visible on the program's to-do list screen using the .visible() method
         //end displayItemsTest function
 
     //create a displayCompletedItemsTest
-        //
+        //assertTrue if BorderPane is visible on the program's to-do list screen using the .visible() method
         //end displayCompletedItemsTest function
 
     //create a displayUncompletedItemsTest
-        //
+        //assertTrue if BorderPane is visible on the program's to-do list screen using the .visible() method
         //end displayUncompletedItemsTest function
 
     //create a saveSingleListTest
