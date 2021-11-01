@@ -9,6 +9,7 @@ package ucf.assignments;
 class ApplicationControllerTest {
 
     //create main function to test features
+        //declare and initialize "testSaveListsFile" as a File class to create and have access to the external file for saved to-do lists and their items
         //declare and initialize "testOuterHashMap" as a HashMap
         //declare and initialize "testInnerHashMap" as a HashMap
         //declare and initialize "testListTitle" as a String
@@ -112,18 +113,22 @@ class ApplicationControllerTest {
         //end displayUncompletedItemsTest function
 
     //create a saveSingleListTest
-        //
+        //function call onSaveListsClick
+        //assertTrue if "testSaveListsFile" exists in the directory
         //end saveSingleListTest function
 
     //create a saveAllListsTest
-        //
+        //function call onSaveListsClick
+        //assertTrue if "testSaveListsFile" exists in the directory
         //end saveAllListsTest function
 
     //create a loadSingleListTest
-        //
+        //assertTrue if "testSaveListsFile" exists in the directory
+        //assertTrue if "testSaveListsFile" is not empty
         //end loadSingleListTest function
 
     //create a loadAllListsTest
-        //
+        //assertTrue if "testSaveListsFile" exists in the directory
+        //assertTrue if "testSaveListsFile" is not empty
         //end loadAllListsTest function
 }

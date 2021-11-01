@@ -33,7 +33,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
         <children>
-            <TextField maxHeight="25" maxWidth="200" minHeight="25" minWidth="200" prefHeight="25.0" prefWidth="200.0" promptText="To-Do List Title" GridPane.columnIndex="4" />
+            <TextField fx:id="userToDoListTitleInput" maxHeight="25" maxWidth="200" minHeight="25" minWidth="200" prefHeight="25.0" prefWidth="200.0" promptText="To-Do List Title" GridPane.columnIndex="4" />
         </children>
     </GridPane>
 

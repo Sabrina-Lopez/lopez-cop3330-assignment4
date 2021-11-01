@@ -5,6 +5,7 @@ package ucf.assignments;
  *  Copyright 2021 Sabrina Lopez
  */
 
+//create Application_ItemStorage to hold the items for each to-do list title that the user adds into the program
 public class Application_ItemStorage extends Application {
 
     public static class ItemComponents { //declare a public static class to utilize as a struct and hold the information for each item

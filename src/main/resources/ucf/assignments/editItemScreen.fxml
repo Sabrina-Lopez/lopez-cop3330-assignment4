@@ -32,10 +32,10 @@
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-          <TextField maxHeight="25" maxWidth="200" minHeight="25" minWidth="200" prefHeight="25.0" prefWidth="200.0" promptText="Item Title" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-          <TextField maxHeight="25" maxWidth="200" minHeight="25" minWidth="200" prefHeight="25.0" prefWidth="200.0" promptText="Item Due Date" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-          <TextField maxHeight="25" maxWidth="200" minHeight="25" minWidth="200" prefHeight="25.0" prefWidth="200.0" promptText="Item Description" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-          <TextField maxHeight="25" maxWidth="200" minHeight="25" minWidth="200" prefHeight="25.0" prefWidth="200.0" promptText="Item Completion Status (0 or 1)" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+          <TextField fx:id="userItemTitleInput" maxHeight="25" maxWidth="200" minHeight="25" minWidth="200" prefHeight="25.0" prefWidth="200.0" promptText="Item Title" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+          <TextField fx:id="userItemDueDateInput" maxHeight="25" maxWidth="200" minHeight="25" minWidth="200" prefHeight="25.0" prefWidth="200.0" promptText="Item Due Date" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+          <TextField fx:id="userItemDescriptionInput" maxHeight="25" maxWidth="200" minHeight="25" minWidth="200" prefHeight="25.0" prefWidth="200.0" promptText="Item Description" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+          <TextField fx:id="userItemCompletionStatusInput" maxHeight="25" maxWidth="200" minHeight="25" minWidth="200" prefHeight="25.0" prefWidth="200.0" promptText="Item Completion Status (0 or 1)" GridPane.columnIndex="3" GridPane.rowIndex="3" />
       </children>
    </GridPane>
 

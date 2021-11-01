@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.util.*;
 
+//create Application class to hold the initial program launch functions
 public class Application extends javafx.application.Application {
 
     public static void main(String[] args) { //declare the main function/method

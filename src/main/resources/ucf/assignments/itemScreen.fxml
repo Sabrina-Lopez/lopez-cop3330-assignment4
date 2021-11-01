@@ -14,7 +14,7 @@
         <font>
             <Font size="15.0" />
         </font></Label>
-   <BorderPane prefHeight="200.0" prefWidth="200.0" />
+   <BorderPane fx:id="currentComponentsOfItem" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" />
    <Accordion />
 
     <Label fx:id="buttonResponses" />
