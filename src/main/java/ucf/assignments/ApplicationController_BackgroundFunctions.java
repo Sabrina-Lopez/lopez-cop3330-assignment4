@@ -7,12 +7,12 @@ package ucf.assignments;
 
 //include any necessary imports
 import javafx.stage.Stage;
-import ucf.assignments.Application_ItemStorage.ItemComponents;
+//import ucf.assignments.Application_ItemStorage.ItemComponents;
 import java.util.HashMap;
 
 
 //create ApplicationController_BackgroundFunctions class to take care of the storage of and changes to the user-inputted data
-public class ApplicationController_BackgroundFunctions extends javafx.application.Application {
+public class ApplicationController_BackgroundFunctions extends Application {
     /*
     //declare and initialize the outerMap, a hashmap with the to-do list title as the key and its respective inner hashmap of items as the value
     HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap = new HashMap<>();

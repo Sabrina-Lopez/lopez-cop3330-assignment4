@@ -14,7 +14,13 @@
         <font>
             <Font size="15.0" />
         </font></Label>
-   <BorderPane fx:id="currentComponentsOfItem" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" />
+   <BorderPane fx:id="currentComponentsOfItem" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
+      <right>
+         <ScrollBar orientation="VERTICAL" BorderPane.alignment="CENTER" />
+      </right>
+      <center>
+         <Label text="[Components of Current Item Will Display Here]" BorderPane.alignment="CENTER" />
+      </center></BorderPane>
    <Accordion />
 
     <Label fx:id="buttonResponses" />

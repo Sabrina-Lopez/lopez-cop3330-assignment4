@@ -380,6 +380,53 @@ class displayCurrentItemComponents {
     currentComponentsOfItem.getChildren().add(currentItemComponent_completionStatus)
 }
 
+Application_ItemStorage -- Application : extends >
+ApplicationController_BackgroundFunctions -- Application : extends >
+ApplicationController_UserInteractionFunctions -- ApplicationController_BackgroundFunctions : extends >
 
+Application -- main : contains >
+Application -- start : contains >
+
+Application_ItemStorage -- ItemComponents : contains >
+ItemComponents -- setItemTitle : contains >
+ItemComponents -- setItemDueDate : contains >
+ItemComponents -- setItemDescription : contains >
+ItemComponents -- setItemCompletionFlag : contains >
+
+ApplicationController_BackgroundFunctions -- addToDoList : contains >
+ApplicationController_BackgroundFunctions -- removeToDoList : contains >
+ApplicationController_BackgroundFunctions -- editToDoListTitle : contains >
+ApplicationController_BackgroundFunctions -- addItem : contains >
+ApplicationController_BackgroundFunctions -- removeItem : contains >
+ApplicationController_BackgroundFunctions -- editItemTitle : contains >
+ApplicationController_BackgroundFunctions -- editItemDueDate : contains >
+ApplicationController_BackgroundFunctions -- editItemDescription : contains >
+ApplicationController_BackgroundFunctions -- editItemCompletionStatus : contains >
+
+ApplicationController_UserInteractionFunctions -- onMakeListClick : contains >
+ApplicationController_UserInteractionFunctions -- onSubmitNewListClick : contains >
+ApplicationController_UserInteractionFunctions -- onEditListClick : contains >
+ApplicationController_UserInteractionFunctions -- onSubmitEditedListClick : contains >
+ApplicationController_UserInteractionFunctions -- onDeleteListClick : contains >
+
+ApplicationController_UserInteractionFunctions -- onMakeItemClick : contains >
+ApplicationController_UserInteractionFunctions -- onSubmitNewItemClick : contains >
+ApplicationController_UserInteractionFunctions -- onEditItemClick : contains >
+ApplicationController_UserInteractionFunctions -- onSubmitEditedItemClick : contains >
+ApplicationController_UserInteractionFunctions -- onDeleteItemClick : contains >
+
+ApplicationController_UserInteractionFunctions -- onSaveListsClick : contains >
+ApplicationController_UserInteractionFunctions -- onLoadListsClick : contains >
+
+ApplicationController_UserInteractionFunctions -- onBackToHomeClick : contains >
+ApplicationController_UserInteractionFunctions -- onBackToListClick : contains >
+ApplicationController_UserInteractionFunctions -- onBackToItemClick : contains >
+
+ApplicationController_UserInteractionFunctions -- onViewCompletedItemsClick : contains >
+ApplicationController_UserInteractionFunctions -- onViewUncompletedItemsClick : contains >
+
+ApplicationController_UserInteractionFunctions -- displayCurrentLists : contains >
+ApplicationController_UserInteractionFunctions -- displayCurrentItems : contains >
+ApplicationController_UserInteractionFunctions -- displayCurrentItemComponents : contains >
 
 @enduml
