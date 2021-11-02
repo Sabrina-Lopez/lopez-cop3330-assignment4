@@ -437,23 +437,23 @@ editItemDueDate -- ItemComponents : edits the due date of an item in >
 editItemDescription -- ItemComponents : edits the description of an item in >
 editItemCompletionStatus -- ItemComponents : edits the completion status of an item in >
 
-onSubmitNewListClick -- addToDoList
-onSubmitEditedListClick -- editToDoListTitle
-onDeleteListClick -- removeToDoList
+onSubmitNewListClick -- addToDoList : has function call for >
+onSubmitEditedListClick -- editToDoListTitle : has function call for >
+onDeleteListClick -- removeToDoList : has function call for >
 
-onSubmitNewItemClick -- addItem
-onSubmitEditedItemClick -- editItemTitle
-onSubmitEditedItemClick -- editItemDueDate
-onSubmitEditedItemClick -- editItemDescription
-onSubmitEditedItemClick -- editItemCompletionStatus
-onDeleteItemClick -- removeItem
+onSubmitNewItemClick -- addItem : has function call for >
+onSubmitEditedItemClick -- editItemTitle : has function call for >
+onSubmitEditedItemClick -- editItemDueDate : has function call for >
+onSubmitEditedItemClick -- editItemDescription : has function call for >
+onSubmitEditedItemClick -- editItemCompletionStatus : has function call for >
+onDeleteItemClick -- removeItem : has function call for >
 
-onSaveListsClick -- removeToDoList
-onLoadListsClick -- addToDoList
+onSaveListsClick -- removeToDoList : has function call for >
+onLoadListsClick -- addToDoList : has function call for >
 
-onViewCompletedItemsClick -- ItemComponents
-onViewUncompletedItemsClick -- ItemComponents
+onViewCompletedItemsClick -- ItemComponents : gets completed items based on their completion status in >
+onViewUncompletedItemsClick -- ItemComponents : gets uncompleted items based on their completion status in >
 
-displayCurrentItemComponents -- ItemComponents
+displayCurrentItemComponents -- ItemComponents : displays an item's components from its respective constructor in >
 
 @enduml
