@@ -1,8 +1,385 @@
 @startuml
 'https://plantuml.com/class-diagram'
 
+class Application {
+    main : public static void
+    start : public void
+}
+
+class main {
+    launch()
+}
+
+class start {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcomeScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage.setScene(scene)
+    stage.setTitle("To-Do App")
+    stage.show()
+}
+
+class Application_ItemStorage {
+    ItemComponents : public static class
+}
+
+class ItemComponents {
+    itemTitle : private String
+    itemDueDate : private String
+    itemDescription : private String
+    itemCompletionFlag : private String
+
+    getItemTitle : public String
+    setItemTitle : public void
+
+    getItemDueDate : public String
+    setItemDueDate : public void
+
+    getItemDescription : public String
+    setItemDescription : public void
+
+    getItemCompletionFlag : public String
+    setItemCompletionFlag : public void
+}
+
+class setItemTitle {
+    this.itemTitle
+}
+
+class setItemDueDate {
+    this.itemDueDate
+}
+
+class setItemDescription {
+    this.itemDescription
+}
+
+class setItemCompletionFlag {
+    this.itemCompletionFlag
+}
+
+class ApplicationController_BackgroundFunctions {
+    outerMap : HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>>
+    innerMap : HashMap<String, Application_ItemStorage.ItemComponents>
+
+    addToDoList : public static HashMap<String, HashMap<String, ItemComponents>>
+    removeToDoList : public static HashMap<String, HashMap<String, ItemComponents>>
+    editToDoListTitle : public static HashMap<String, HashMap<String, ItemComponents>>
+
+    addItem : public static HashMap<String, ItemComponents>
+    removeItem : public static HashMap<String, ItemComponents>
+    editItemTitle : public static HashMap<String, ItemComponents>
+    editItemDueDate :  public static HashMap<String, ItemComponents>
+    editItemDescription :  public static HashMap<String, ItemComponents>
+    editItemCompletionStatus :  public static HashMap<String, ItemComponents>
+
+    start : public void
+}
+
 class addToDoList {
     outerMap.put(toDoListTitle, innerMap)
 }
+
+class removeToDoList {
+    outerMap.remove(toDoListTitle, innerMap)
+}
+
+class editToDoListTitle {
+    copyOfItems : HashMap<String, ItemComponents>
+    outerMap.remove(oldToDoListTitle)
+    outerMap.put(newToDoListTitle, copyOfItems)
+}
+
+class addItem {
+    itemComponents : ItemComponents
+    itemComponents.setItemTitle(itemTitle)
+    itemComponents.setItemDueDate(itemDueDate)
+    itemComponents.setItemDescription(itemDescription)
+    innerMap.put(itemTitle, itemComponents)
+}
+
+class removeItem {
+    itemComponents : ItemComponents
+    innerMap.remove(itemTitle, itemComponents)
+}
+
+class editItemTitle {
+    copyOfItems : ItemComponents
+    innerMap.remove(oldItemTitle)
+    innerMap.put(newItemTitle, copyOfItems)
+}
+
+class editItemDueDate {
+    itemComponents : ItemComponents
+    itemComponents.setItemDueDate(itemDueDate)
+    innerMap.put(itemTitle, itemComponents)
+}
+
+class editItemDescription {
+    itemComponents : ItemComponents
+    itemComponents.setItemDescription(itemDescription)
+    innerMap.put(itemTitle, itemComponents)
+}
+
+class editItemCompletionStatus {
+    itemComponents : ItemComponents
+    itemComponents.setItemCompletionFlag(itemCompletionStatus)
+    innerMap.put(itemTitle, itemComponents)
+}
+
+class ApplicationController_UserInteractionFunctions {
+    currentLists : private BorderPane
+    currentItemsOfList : private BorderPane
+    currentComponentsOfItem : private BorderPane
+
+    userToDoListTitleInput : private TextField
+    userItemTitleInput : private TextField
+    userItemDueDateInput : private TextField
+    userItemDescriptionInput : private TextField
+    userItemCompletionStatusInput : private TextField
+
+    currentToDoListTitle : String
+    currentItemDescription : String
+    currentItemDueDate : String
+    currentItemCompletionStatus : String
+
+    onMakeListClick : protected void
+    onEditListClick : protected void
+    onSubmitNewListClick : protected void
+    onSubmitEditedListClick : protected void
+    onDeleteListClick : protected void
+
+    onMakeItemClick : protected void
+    onEditItemClick : protected void
+    onSubmitNewItemClick : protected void
+    onSubmitEditedItemClick : protected void
+    onDeleteItemClick : protected void
+
+    externalListsFileCreated : boolean
+
+    onSaveListsClick : protected void
+    onLoadListsClick : protected void
+
+    onBackToHomeClick : protected void
+    onBackToListClick : protected void
+    onBackToItemClick : protected void
+
+    onViewCompletedItemsClick : protected BorderPane
+    onViewUncompletedItemsClick : protected BorderPane
+
+    displayCurrentLists : protected void
+    displayCurrentItems : protected void
+    displayCurrentItemComponents : protected void
+}
+
+class onMakeListClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("makeToDoListScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onEditListClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("editToDoListScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+    userToDoListTitleInput.getText()
+}
+
+class onSubmitNewListClick {
+    userToDoListTitleInput.getText()
+    addToDoList(toDoListTitle, outerMap, innerMap)
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcomeScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+class onSubmitEditedListClick {
+    oldToDoListTitle : String
+    userToDoListTitleInput.getText()
+    editToDoListTitle(oldToDoListTitle, currentToDoListTitle, outerMap)
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcomeScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onDeleteListClick {
+    removeToDoList(outerMap, innerMap, currentToDoListTitle)
+}
+
+class onMakeItemClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("makeItemScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onEditItemClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("editItemScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+    userItemTitleInput.getText()
+}
+
+class onSubmitNewItemClick {
+    userItemTitleInput.getText()
+    userItemDueDateInput.getText()
+    userItemDescriptionInput.getText()
+    userItemCompletionStatusInput.getText()
+    addItem(innerMap, currentItemTitle, currentItemDueDate, currentItemDescription, currentItemCompletionStatus)
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("toDoListScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onSubmitEditedItemClick {
+    userItemTitleInput.getText()
+    userItemDueDateInput.getText()
+    userItemDescriptionInput.getText()
+    userItemCompletionStatusInput.getText()
+    editItemTitle(oldItemTitle, currentItemTitle, innerMap)
+    editItemDueDate(innerMap, currentItemTitle, currentItemDueDate)
+    editItemDescription(innerMap, currentItemTitle, currentItemDescription)
+    editItemCompletionStatus(innerMap, currentItemTitle, currentItemCompletionStatus)
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("toDoListScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onDeleteItemClick {
+    removeItem(innerMap, currentItemTitle)
+}
+
+class onSaveListsClick {
+    externalListsFile : File
+    externalListsFile.createNewFile()
+    externalListsFileOutput : FileWriter
+    removeToDoList(outerMap, innerMap, currentToDoListTitle)
+}
+
+class onLoadListsClick {
+    assertTrue(externalListsFileCreated)
+}
+
+class onBackToHomeClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcomeScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onBackToListClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("toDoListScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onBackToItemClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("itemScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onViewCompletedItemsClick {
+    HashMap.Entry<String, Application_ItemStorage.ItemComponents> entry : innerMap.entrySet()
+    entry.getValue().getItemCompletionFlag().equals("1")
+    currentItem : Text
+    Text(entry.getKey())
+    currentCompletedItems.getChildren().add(currentItem)
+}
+
+class onViewUncompletedItemsClick {
+    HashMap.Entry<String, Application_ItemStorage.ItemComponents> entry : innerMap.entrySet()
+    entry.getValue().getItemCompletionFlag().equals("0")
+    currentItem : Text
+    Text(entry.getKey())
+    currentUncompletedItems.getChildren().add(currentItem)
+}
+
+class displayCurrentLists {
+    HashMap.Entry<String, HashMap<String, Application_ItemStorage.ItemComponents>> entry : outerMap.entrySet()
+    currentList : Text
+    Text(entry.getKey())
+    currentLists.getChildren().add(currentList)
+}
+
+class displayCurrentItems {
+    HashMap.Entry<String, Application_ItemStorage.ItemComponents> entry : innerMap.entrySet()
+    currentItem : Text
+    Text(entry.getKey())
+    currentItemsOfList.getChildren().add(currentItem)
+}
+
+class displayCurrentItemComponents {
+    currentItemComponent_title : Text
+    Text(innerMap.get(currentItemTitle).getItemTitle())
+    currentComponentsOfItem.getChildren().add(currentItemComponent_title)
+
+    currentItemComponent_deadline : Text
+    Text(innerMap.get(currentItemTitle).getItemDueDate())
+    currentComponentsOfItem.getChildren().add(currentItemComponent_deadline)
+
+    currentItemComponent_description : Text
+    Text(innerMap.get(currentItemTitle).getItemDescription())
+    currentComponentsOfItem.getChildren().add(currentItemComponent_description)
+
+    currentItemComponent_completionStatus : Text
+    Text(innerMap.get(currentItemTitle).getItemCompletionFlag())
+    currentComponentsOfItem.getChildren().add(currentItemComponent_completionStatus)
+}
+
+
 
 @enduml

@@ -100,6 +100,9 @@ class ApplicationControllerTest {
         //assertTrue if testInnerHashMap<testItemTitle, ItemComponents.get(completionFlag)> equals testItemCompletionMarker
         //end markCompleteTest function
 
+
+    //the following display tests will be specified in part 2 when connecting the test code to the screen builder
+
     //create a displayItemsTest
         //assertTrue if BorderPane is visible on the program's to-do list screen using the .visible() method
         //end displayItemsTest function

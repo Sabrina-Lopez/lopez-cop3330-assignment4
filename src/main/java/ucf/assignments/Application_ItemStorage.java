@@ -7,7 +7,7 @@ package ucf.assignments;
 
 //create Application_ItemStorage to hold the items for each to-do list title that the user adds into the program
 public class Application_ItemStorage extends Application {
-
+    /*
     public static class ItemComponents { //declare a public static class to utilize as a struct and hold the information for each item
         private String itemTitle; //declare a String variable, itemTitle, to hold the name or title of the item
         private String itemDueDate; //declare a String variable, itemDueDate, to hold the due date of the item
@@ -46,4 +46,5 @@ public class Application_ItemStorage extends Application {
             this.itemCompletionFlag = itemCompletionFlag; //use the this.(object) method to take the user input and place it into the item completion status variable in the constructor
         }
     }
+     */
 }

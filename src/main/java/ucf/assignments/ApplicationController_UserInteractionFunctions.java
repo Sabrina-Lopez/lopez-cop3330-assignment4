@@ -269,6 +269,7 @@ public class ApplicationController_UserInteractionFunctions extends ApplicationC
         //a function that occurs when the user clicks the load list button on the welcome screen
     protected void onLoadListsClick() {
         //ensure the file exists in the directory
+        assertTrue(externalListsFileCreated);
         if(externalListsFileCreated) { //if the external file for the saved lists is successfully inside the directory
             //load the user's selected list from the external file by adding it back to the double hashmap
         }
