@@ -272,6 +272,7 @@ public class ApplicationController_UserInteractionFunctions extends ApplicationC
         assertTrue(externalListsFileCreated);
         if(externalListsFileCreated) { //if the external file for the saved lists is successfully inside the directory
             //load the user's selected list from the external file by adding it back to the double hashmap
+            //addToDoList(currentToDoListTitle, outerMap, innerMap);
         }
     }
 

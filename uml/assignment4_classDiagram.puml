@@ -297,6 +297,7 @@ class onSaveListsClick {
 
 class onLoadListsClick {
     assertTrue(externalListsFileCreated)
+    addToDoList(currentToDoListTitle, outerMap, innerMap)
 }
 
 class onBackToHomeClick {
@@ -428,5 +429,31 @@ ApplicationController_UserInteractionFunctions -- onViewUncompletedItemsClick : 
 ApplicationController_UserInteractionFunctions -- displayCurrentLists : contains >
 ApplicationController_UserInteractionFunctions -- displayCurrentItems : contains >
 ApplicationController_UserInteractionFunctions -- displayCurrentItemComponents : contains >
+
+addItem -- ItemComponents : adds an item's details into >
+removeItem -- ItemComponents : removes an item's details from >
+editItemTitle -- ItemComponents : edits the title of an item in >
+editItemDueDate -- ItemComponents : edits the due date of an item in >
+editItemDescription -- ItemComponents : edits the description of an item in >
+editItemCompletionStatus -- ItemComponents : edits the completion status of an item in >
+
+onSubmitNewListClick -- addToDoList
+onSubmitEditedListClick -- editToDoListTitle
+onDeleteListClick -- removeToDoList
+
+onSubmitNewItemClick -- addItem
+onSubmitEditedItemClick -- editItemTitle
+onSubmitEditedItemClick -- editItemDueDate
+onSubmitEditedItemClick -- editItemDescription
+onSubmitEditedItemClick -- editItemCompletionStatus
+onDeleteItemClick -- removeItem
+
+onSaveListsClick -- removeToDoList
+onLoadListsClick -- addToDoList
+
+onViewCompletedItemsClick -- ItemComponents
+onViewUncompletedItemsClick -- ItemComponents
+
+displayCurrentItemComponents -- ItemComponents
 
 @enduml
